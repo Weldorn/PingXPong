@@ -42,13 +42,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MA9-BP-fob">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Jogador 1" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="MA9-BP-fob">
                                 <rect key="frame" x="30" y="261" width="318" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jaN-6L-eSB">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Jogador 2" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="jaN-6L-eSB">
                                 <rect key="frame" x="30" y="306" width="318" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -59,6 +59,10 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Ping X Pong" id="QPT-Lp-kKs"/>
+                    <connections>
+                        <outlet property="textFieldPlayer1" destination="MA9-BP-fob" id="3Nt-1i-UXi"/>
+                        <outlet property="textFieldPlayer2" destination="jaN-6L-eSB" id="D6V-u3-Mmv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -67,7 +71,7 @@
         <!--Partida-->
         <scene sceneID="cMt-18-mv3">
             <objects>
-                <viewController id="ohT-SO-eS6" sceneMemberID="viewController">
+                <viewController id="ohT-SO-eS6" customClass="MatchViewController" customModule="PingXPong" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yyW-cK-mcV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -90,13 +94,13 @@
                                 <rect key="frame" x="30" y="182" width="118" height="93.333333333333329"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="70"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="myP-6f-j5X">
                                 <rect key="frame" x="216" y="181" width="118" height="93.333333333333329"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="70"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="X" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ifw-NT-TfC">
                                 <rect key="frame" x="155" y="190" width="65" height="76"/>
@@ -113,8 +117,11 @@
                                 <state key="normal" title="+ Ponto">
                                     <color key="titleColor" name="Secondary"/>
                                 </state>
+                                <connections>
+                                    <action selector="addScore:" destination="ohT-SO-eS6" eventType="touchUpInside" id="uvD-Ty-lDE"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QCx-KL-jMs">
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QCx-KL-jMs">
                                 <rect key="frame" x="216" y="283" width="118" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" name="Main"/>
@@ -122,6 +129,9 @@
                                 <state key="normal" title="+ Ponto">
                                     <color key="titleColor" name="Secondary"/>
                                 </state>
+                                <connections>
+                                    <action selector="addScore:" destination="ohT-SO-eS6" eventType="touchUpInside" id="dmv-Yc-GnE"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Cd-jG-0Hd">
                                 <rect key="frame" x="28" y="348" width="318" height="48"/>
@@ -131,6 +141,9 @@
                                 <state key="normal" title="Terminar Partida">
                                     <color key="titleColor" name="Main"/>
                                 </state>
+                                <connections>
+                                    <action selector="registerMatch:" destination="ohT-SO-eS6" eventType="touchUpInside" id="69v-og-Jxg"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Placares" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6hQ-nv-xfj">
                                 <rect key="frame" x="28" y="420" width="148" height="21"/>
@@ -153,6 +166,13 @@
                         <viewLayoutGuide key="safeArea" id="9OS-qM-qKm"/>
                     </view>
                     <navigationItem key="navigationItem" title="Partida" id="qB9-0r-GTI"/>
+                    <connections>
+                        <outlet property="labelPlayer1" destination="Y2G-RQ-oCP" id="74D-GW-mDB"/>
+                        <outlet property="labelPlayer2" destination="P5w-xo-WIw" id="bkm-eV-NLz"/>
+                        <outlet property="textFieldScore1" destination="QsF-4f-IRh" id="1Lz-lc-fS5"/>
+                        <outlet property="textFieldScore2" destination="myP-6f-j5X" id="m6L-2y-zbj"/>
+                        <outlet property="textViewScores" destination="ISY-Jw-fQm" id="dWM-oU-Mez"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fu3-Uh-Cct" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
